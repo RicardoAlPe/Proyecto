@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categorías</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin: 40px 0 20px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .categories_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+            
+        }
+
+        .category_card {
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.4s ease-out; 
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px; 
+        }
+
+        .category_card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .category_card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .category_card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category_header {
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        .product_menu {
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; 
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            padding: 0 0; 
+            box-sizing: border-box;
+        }
+
+        .product_menu a {
+            display: block;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #555;
+            transition: background-color 0.2s ease;
+        }
+
+        .product_menu a:hover {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+
+        
+        .category_card.active .product_menu {
+            max-height: 200px; 
+            padding: 10px 0; 
+        }
+
+        @media (max-width: 768px) {
+            .category_card img {
+                height: 180px;
+            }
+            .category_card {
+                min-height: 250px; 
+            }
+        }
+    </style>
+</head>
+
+<body class="main-layout inner_posituong">
+    <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div>
+    <header>
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/Logo12.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about.html">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="computer.html">Computer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="laptop.html">Laptop</a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="product.html">Categorias</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item d_none">
+                                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item d_none">
+                                        <a class="nav-link" href="#">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <h2>Categorías</h2>
+
+    <div class="categories_grid">
+        <div class="category_card">
+            <img src="images/monitores.png" alt="Monitores" />
+            <div class="category_header">IMAGEN</div>
+            <div class="product_menu">
+                <a href="monitores.html">Monitores</a>
+                <a href="productos/proyectores.html">Proyectores</a>
+                <a href="productos/pantallas_proyeccion.html">Pantallas de Proyección</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/accesorios.jpg" alt="Accesorios" />
+            <div class="category_header">ACCESORIOS</div>
+            <div class="product_menu">
+                <a href="productos/mouses.html">Mouses</a>
+                <a href="productos/teclados.html">Teclados</a>
+                <a href="productos/webcams.html">Webcams</a>
+                <a href="productos/audifonos.html">Audífonos</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/impresoras.png" alt="Impresoras" />
+            <div class="category_header">IMPRESORAS</div>
+            <div class="product_menu">
+                <a href="productos/impresoras_laser.html">Impresoras Láser</a>
+                <a href="productos/impresoras_inyeccion.html">Impresoras de Inyección</a>
+                <a href="productos/multifuncionales.html">Multifuncionales</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/auriculares.jpg" alt="Auriculares" />
+            <div class="category_header">PERIFERICOS</div>
+            <div class="product_menu">
+                <a href="productos/parlantes.html">Parlantes</a>
+                <a href="productos/microfonos.html">Micrófonos</a>
+                <a href="productos/gamepads.html">Gamepads</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/camaras.jpg" alt="Cámaras" />
+            <div class="category_header">CÁMARAS</div>
+            <div class="product_menu">
+                <a href="productos/camaras_digitales.html">Cámaras Digitales</a>
+                <a href="productos/camaras_seguridad.html">Cámaras de Seguridad</a>
+                <a href="productos/drones.html">Drones con Cámara</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/ups.jpg" alt="proteccion" />
+            <div class="category_header">PROTECCION</div>
+            <div class="product_menu">
+                <a href="productos/ups.html">UPS</a>
+                <a href="productos/reguladores.html">Reguladores de Voltaje</a>
+                <a href="productos/supresores_picos.html">Supresores de Picos</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/product6.png" alt="Discos Duros" />
+            <div class="category_header">ALMACENAMIENTO</div>
+            <div class="product_menu">
+                <a href="productos/discos_duros_externos.html">Discos Duros Externos</a>
+                <a href="productos/ssd.html">SSD</a>
+                <a href="productos/memorias_usb.html">Memorias USB</a>
+            </div>
+        </div>
+
+        <div class="category_card">
+            <img src="images/consumibles.jpg" alt="Consumibles" />
+            <div class="category_header">CONSUMIBLES</div>
+            <div class="product_menu">
+                <a href="productos/toner.html">Tóner</a>
+                <a href="productos/cartuchos_tinta.html">Cartuchos de Tinta</a>
+                <a href="productos/papel.html">Papel</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <img class="logo1" src="images/Logo12.png" alt="#"/>
+                        <ul class="social_icon">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h3>About Us</h3>
+                        <ul class="about_us">
+                            <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor incididunt r</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h3>Contact Us</h3>
+                        <ul class="conta">
+                            <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <form class="bottom_form">
+                            <h3>Newsletter</h3>
+                            <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                            <button class="sub_btn">subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Copy rigths 2025 by J-RAS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryCards = document.querySelectorAll('.category_card');
+
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    
+                    if (event.target.closest('.product_menu')) {
+                        return; 
+                    }
+
+                    
+                    categoryCards.forEach(otherCard => {
+                        if (otherCard !== this && otherCard.classList.contains('active')) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+
+                    
+                    this.classList.toggle('active');
+                });
+            });
+
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.category_card')) {
+                    categoryCards.forEach(card => {
+                        card.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

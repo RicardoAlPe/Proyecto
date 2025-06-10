@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Categorías</title>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <style>
+      .categories_grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 20px;
+         max-width: 1000px;
+         margin: 0 auto;
+         padding: 40px;
+      }
+
+      .category_box {
+         background-color: #f8f9fa;
+         border: 2px solid #000;
+         height: 150px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: all 0.3s ease;
+         border-radius: 10px;
+         overflow: hidden;
+         position: relative;
+      }
+
+      .category_box img {
+         max-width: 100%;
+         max-height: 100%;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+      }
+
+      .category_box:hover img {
+         transform: scale(1.1);
+      }
+
+      .categories_title {
+         text-align: center;
+         margin-top: 30px;
+         font-size: 36px;
+         font-weight: bold;
+      }
+   </style>
+</head>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Productos - Monitores</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 38px;
+        margin: 40px 0 20px 0;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .products_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* MÁS ANCHO */
+        gap: 24px;
+        max-width: 1400px;
+        margin: 0 auto 50px auto;
+        padding: 0 20px;
+    }
+
+    .product_card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        background-color: #fff;
+        text-decoration: none;
+        color: #333;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product_card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    .product_card img {
+        width: 100%;
+        height: 350px; /* MÁS ALTO */
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .product_card:hover img {
+        transform: scale(1.05);
+    }
+
+    .product_name {
+        padding: 18px 12px; /* MÁS ESPACIO */
+        font-size: 20px; /* MÁS GRANDE */
+        font-weight: 600;
+        text-align: center;
+        border-top: 1px solid #eee;
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    .product_card:hover .product_name {
+        background-color: #f5f5f5;
+    }
+
+    @media (max-width: 768px) {
+        .product_card img {
+            height: 280px;
+        }
+    }
+</style>
+</head>
+
+
+<body class="main-layout inner_posituong">
+
+   <!-- Header -->
+   <body class="main-layout inner_posituong">
+      <!-- loader  -->
+             <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index.html"><img src="images/Logo12.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item ">
+                                 <a class="nav-link" href="index.html">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="about.html">About</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="computer.html">Computer</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="laptop.html">Laptop</a>
+                              </li>
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="product.html">Categorias</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="contact.html">Contact Us</a>
+                              </li>
+                              <li class="nav-item d_none">
+                                 <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                              </li>
+                              <li class="nav-item d_none">
+                                 <a class="nav-link" href="#">Login</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+
+   <!-- End Header -->
+
+   <!-- Categorías Grid -->
+
+
+    <h2>Monitores</h2>
+
+    <div class="products_grid">
+        <!-- Producto 1 -->
+        <a href="monitor1.html" class="product_card">
+            <img src="images/MonitorSamsung.jpg" alt="Monitor Samsung" />
+            <div class="product_name">Monitor Samsung Odyssey de 144 Hz</div>
+        </a>
+
+        <!-- Producto 2 -->
+        <a href="monitor2.html" class="product_card">
+            <img src="images/monitor2.png" alt="Monitor Xiaomi A27i" />
+            <div class="product_name">Monitor Xiaomi A27i</div>
+        </a>
+
+        <!-- Producto 3 -->
+        <a href="monitor3.html" class="product_card">
+            <img src="images/monitor3.png" alt="Monitor MSI GAMING VA 34" />
+            <div class="product_name">Monitor MSI GAMING VA 34"</div>
+        </a>
+
+        <!-- Producto 4 -->
+        <a href="monitor4.html" class="product_card">
+            <img src="images/monitor4.jpg" alt="Monitor Samsung Essential S3 S30GD, 27" />
+            <div class="product_name">Monitor Samsung Essential S3 S30GD, 27"</div>
+        </a>
+    </div>
+   <!-- End Categorías Grid -->
+
+   <!-- Footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <img class="logo1" src="images/Logo12.png" alt="#"/>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <h3>About Us</h3>
+                     <ul class="about_us">
+                        <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor incididunt r</li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <h3>Contact Us</h3>
+                     <ul class="conta">
+                        <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <form class="bottom_form">
+                        <h3>Newsletter</h3>
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>Copy rigths 2025 by J-RAS</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+   <!-- End Footer -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+</body>
+</html>

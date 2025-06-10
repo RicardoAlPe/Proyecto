@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalle del Producto | Mi Tienda</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product_detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .product_gallery_container {
+            flex: 1 1 400px;
+        }
+
+        .main_image_container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .main_image_container img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .main_image_container img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel_btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .main_image_container:hover .carousel_btn {
+            opacity: 1;
+        }
+
+        .carousel_btn.prev {
+            left: 10px;
+        }
+
+        .carousel_btn.next {
+            right: 10px;
+        }
+
+        .thumbnail_container {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail_container img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail_container img:hover,
+        .thumbnail_container img.active {
+            opacity: 1;
+            border-color: #007bff;
+        }
+
+        .product_info {
+            flex: 1 1 400px;
+        }
+
+        .product_info h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .product_info .price {
+            font-size: 24px;
+            color: #e60023;
+            margin-bottom: 20px;
+        }
+
+        .buy_button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .buy_button:hover {
+            background-color: #0056b3;
+        }
+
+        .product_info .description {
+            margin-bottom: 20px;
+        }
+
+        .specs {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .specs h2 {
+            margin-bottom: 15px;
+        }
+
+        .specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .specs li {
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .specs li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #007bff;
+        }
+
+        .related_products {
+            margin-top: 40px;
+        }
+
+        .related_products h2 {
+            margin-bottom: 15px;
+        }
+
+        .related_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .related_grid .product_card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related_grid .product_card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .related_grid .product_card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .related_grid .product_card h4 {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .share_section {
+            margin-top: 30px;
+        }
+
+        .share_section h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .share_icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .share_icons a {
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .share_icons a:hover {
+            background-color: #ddd;
+        }
+
+        .share_icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .specs {
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 12px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+   margin-bottom: 30px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 16px;
+}
+
+.specs h2 {
+   margin-bottom: 15px;
+   font-size: 20px;
+   font-weight: bold;
+}
+
+.spec_row {
+   display: flex;
+   justify-content: space-between;
+   padding: 8px 0;
+   border-bottom: 1px solid #e0e0e0;
+}
+
+.spec_row:last-child {
+   border-bottom: none;
+}
+
+.spec_label {
+   font-weight: bold;
+   color: #333;
+}
+
+.spec_value {
+   color: #555;
+   text-align: right;
+   max-width: 60%;
+}
+    </style>
+</head>
+
+<body class="main-layout inner_posituong">
+
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+
+    <!-- Header -->
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/Logo12.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about.html">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="computer.html">Computer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="laptop.html">Laptop</a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="product.html">Categorias</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item d_none">
+                                        <a class="nav-link" href="#"><i class="fa fa-search"
+                                                aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item d_none">
+                                        <a class="nav-link" href="#">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    
+    <div class="container">
+        <div class="product_detail">
+            
+            <div class="product_gallery_container">
+                <div class="main_image_container">
+                    <img id="mainProductImage" src="images/monitor2.png" alt="Producto principal" />
+                    <button class="carousel_btn prev">&#10094;</button>
+                    <button class="carousel_btn next">&#10095;</button>
+                </div>
+                <div class="thumbnail_container">
+                    <img src="images/monitor2.png" alt="Thumbnail principal" class="thumbnail active" />
+                    <img src="images/xiaomi2" alt="Thumbnail 1" class="thumbnail" />
+                    <img src="images/xiaomi3" alt="Thumbnail 2" class="thumbnail" />
+                    <img src="images/xiaomi4" alt="Thumbnail 2" class="thumbnail" />
+                </div>
+            </div>
+
+            
+            <div class="product_info">
+                <h1>Monitor Xiaomi A27i  27 Full HD, IPS, 100Hz</h1>
+                <div class="price">$250.00</div>
+                <a href="#" class="buy_button">Añadir al carrito</a>
+                <div class="description">
+                    <p>
+                        El Xiaomi A27i es un monitor LED de 27” Full HD con panel IPS y 100Hz, ideal para trabajo y entretenimiento.
+                    </p>
+                </div>
+
+<div class="specs">
+   <h2>Especificaciones:</h2>
+   <div class="spec_row">
+      <span class="spec_label">Resolución:</span>
+      <span class="spec_value">1920 x 1080</span>
+   </div>
+   <div class="spec_row">
+      <span class="spec_label">Tipo de panel:</span>
+      <span class="spec_value">LED IPS con resolución Full HD</span>
+   </div>
+   <div class="spec_row">
+      <span class="spec_label">Tamaño del panel:</span>
+      <span class="spec_value">27"</span>
+   </div>
+   <div class="spec_row">
+      <span class="spec_label">Máx. Tipo de puerto:</span>
+      <span class="spec_value">HDMI X1, VGA X1, DP X1, ENTRADA DE AUDÍFONO.</span>
+   </div>
+    <div class="spec_row">
+      <span class="spec_label">Color:</span>
+      <span class="spec_value">Negro.</span>
+   </div>
+</div>
+
+                <div class="share_section">
+                    <h3>Compartir</h3>
+                    <div class="share_icons">
+                        <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="images/X.png" alt="X"></a>
+                        <a href="#"><img src="images/WhatsApp.png" alt="WhatsApp"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="related_products">
+            <h2>Artículos Relacionados</h2>
+            <div class="related_grid">
+                <div class="product_card">
+                    <img src="images/mouses.png" alt="Producto relacionado 1" />
+                    <h4>Mouses</h4>
+                </div>
+                <div class="product_card">
+                    <img src="images/auriculares.jpg" alt="Producto relacionado 2" />
+                    <h4>auriculares</h4>
+                </div>
+                <div class="product_card">
+                    <img src="images/camaras.jpg" alt="Producto relacionado 3" />
+                    <h4>camras</h4>
+                </div>
+                <div class="product_card">
+                    <img src="images/memoriasram.jpg" alt="Producto relacionado 4" />
+                    <h4>memorias RAM</h4>
+                </div>
+                <div class="product_card">
+                    <img src="images/memoriasram.jpg" alt="Producto relacionado 5" />
+                    <h4>mas memoria RAM</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <img class="logo1" src="images/Logo12.png" alt="#" />
+                        <ul class="social_icon">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h3>About Us</h3>
+                        <ul class="about_us">
+                            <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor
+                                incididunt r</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <h3>Contact Us</h3>
+                        <ul class="conta">
+                            <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <form class="bottom_form">
+                            <h3>Newsletter</h3>
+                            <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                            <button class="sub_btn">subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Copy rigths 2025 by J-RAS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+        const mainImage = document.getElementById('mainProductImage');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const prevBtn = document.querySelector('.carousel_btn.prev');
+        const nextBtn = document.querySelector('.carousel_btn.next');
+
+        let currentIndex = 0;
+
+        const updateMainImage = (index) => {
+            mainImage.src = thumbnails[index].src;
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+        };
+
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                currentIndex = index;
+                updateMainImage(currentIndex);
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+            updateMainImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % thumbnails.length;
+            updateMainImage(currentIndex);
+        });
+    </script>
+</body>
+</html>
